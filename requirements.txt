@@ -1,9 +1,0 @@
-flask
-flask-session
-flask-sqlalchemy
-python-dotenv
-google-genai
-pdfplumber
-python-docx
-
-# cv as a image
