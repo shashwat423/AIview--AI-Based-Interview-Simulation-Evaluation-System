@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}AIview{% endblock %}</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<script>
+    const themes = [
+        "linear-gradient(to bottom, #f1f5f9, #bfe1ef)", // faint blue (default)
+        "linear-gradient(to bottom, #f1f5f9, #e0f2fe)", // faint white 
+        "linear-gradient(to bottom, #f1f5f9, #dcfce7)", // faint green
+        "linear-gradient(to bottom, #f1f5f9, #fef9c3)", // faint yellow
+        "linear-gradient(to bottom, #f1f5f9, #fee2e2)", // faint red
+        "linear-gradient(to bottom, #f1f5f9, #ffedd5)", // faint orange
+        "linear-gradient(to bottom, #f1f5f9, #fce7f3)", // faint pink
+        "linear-gradient(to bottom, #f1f5f9, #f3e8ff)", // faint purple
+        "linear-gradient(to bottom, #f1f5f9, #ccfbf1)"  // faint teal
+    ];
+
+    function loadTheme(){
+        let saved = localStorage.getItem("themeIndex");
+        if(saved === null){
+        saved = 0;
+    }
+    document.documentElement.style.setProperty("--theme-bg", themes[saved]);
+    }
+
+    function changeTheme(){
+        let current = localStorage.getItem("themeIndex");
+
+        if(current === null){
+            current = 0;
+        }else{
+
+            current = parseInt(current);
+            current = (current + 1) % themes.length;
+        }
+        localStorage.setItem("themeIndex", current);
+        document.documentElement.style.setProperty("--theme-bg", themes[current]);
+    }
+    window.onload = loadTheme;
+    </script>
+
+<body>
+
+<!-- ================= Upload Modal ================= -->
+
+<div id="uploadModal" class="modal-overlay hidden">
+
+  <div class="modal">
+
+    <div class="modal-header">
+      <h3 id="modalTitle">Upload Your CV</h3>
+      <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+
+    <p class="modal-subtitle" id="modalSubtitle">
+      Please upload your CV to start the interview process.
+    </p>
+
+    <div id="uploadSection">
+      <div class="upload-box">
+
+        <p>Drag & drop your CV here, or</p>
+
+        <button class="browse-btn" onclick="triggerFile()">Browse File</button>
+
+        <p class="file-types">
+          Accepted file formats: PDF, DOC, DOCX
+        </p>
+
+        <input type="file" id="fileInput" hidden>
+
+      </div>
+    </div>
+
+
+    <!-- Upload Progress -->
+
+    <div id="progressSection" class="hidden">
+
+      <div class="file-row">
+        <span id="fileName"></span>
+        <span id="progressPercent">0%</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <p class="uploading-text" id="uploadText">Uploading...</p>
+
+    </div>
+
+
+    <!-- Parsing -->
+
+    <div id="parsingSection" class="hidden">
+
+      <div class="file-row">
+        <span>Parsing resume</span>
+        <span id="parsePercent">0%</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="parseFill"></div>
+      </div>
+
+      <p class="uploading-text" id="parseText">Parsing...</p>
+
+    </div>
+
+
+    <!-- Question Generation -->
+
+    <div id="questionSection" class="hidden">
+
+      <div class="file-row">
+        <span>Generating interview questions</span>
+        <span id="questionPercent">0%</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="questionFill"></div>
+      </div>
+
+      <p class="uploading-text" id="questionText">
+        Generating questions...
+      </p>
+
+    </div>
+
+
+    <div class="modal-footer">
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <button class="next-btn disabled" id="nextBtn">Next →</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= Interview Completion Modal ================= -->
+
+<div id="completionModal" class="completion-modal">
+
+  <div class="completion-box">
+
+    <h2>Interview Completed</h2>
+
+    <p>Your interview has been successfully evaluated.</p>
+
+    <button id="viewResultsBtn">View Results</button>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= Login Modal ================= -->
+
+<div id="loginModal" class="auth-modal">
+
+  <div class="auth-box">
+
+    <span class="close-btn" onclick="closeLogin()">×</span>
+
+    <h2>Login</h2>
+
+    <input id="username" placeholder="Username">
+
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="loginUser()">Login</button>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= Main Layout ================= -->
+
+<div class="container">
+
+  <!-- Sidebar -->
+
+  <div class="sidebar">
+
+    <div class="sidebar-title">AIview</div>
+
+    <ul>
+
+      <li>🏠 <a href="/home">Home</a></li>
+
+      <li>📋 <a href="/dashboard">Dashboard</a></li>
+
+      <li>📄 <a href="/results">Results</a></li>
+
+      <li>📚 <a href="/learning-hub">Learning Hub</a></li>
+
+      <li>🎨 <a href="#" onclick="changeTheme()">Theme</a></li>
+
+      <li>🧭 <a href="/system-guide">System Guide</a></li>
+
+      {% if session.get("logged_in") %}
+      <li>🚪 <a href="/logout">Logout</a></li>
+      {% endif %}
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- Main Content -->
+
+  <div class="main">
+
+    <div class="header">
+
+      <div class="left"></div>
+
+      <div class="right" id="auth-section">
+
+        {% if session.get("logged_in") %}
+
+          <div class="login-signup">
+           Hi User 🧑‍💻
+          </div>
+
+        {% else %}
+
+          <div class="login-signup" onclick="openLogin()">
+            Login
+          </div>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+
+    <div class="content">
+
+      {% block content %}{% endblock %}
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================= Scripts ================= -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

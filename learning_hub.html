@@ -1,0 +1,402 @@
+{% extends "layout.html" %}
+
+{% block title %}Learning Hub - AIview{% endblock %}
+
+{% block content %}
+        <div class="learning-hub">
+
+            <div class="hub-tabs">
+                <div class="tab active" data-tab="tips">Interview Tips</div>
+                <div class="tab" data-tab="resume">Resume Tips</div>
+                <div class="tab" data-tab="questions">Common Questions</div>
+                <div class="tab" data-tab="frameworks">Answer Frameworks</div>
+                <div class="tab" data-tab="ai">AI Answer Examples</div>
+
+                <div class="tab-slider"></div>
+            </div>
+
+            <div class="hub-content">
+
+                <div class="tab-content active" id="tips">
+                    <h2>Interview Tips</h2>
+
+                    <h3>1. Research the Company</h3>
+                    <p>Understand the company’s mission, products, culture, and recent news. This helps you tailor your answers.</p>
+
+                    <h3>2. Practice Structured Answers</h3>
+                    <p>Use frameworks like STAR to give clear and concise responses.</p>
+
+                    <h3>3. Communicate Clearly</h3>
+                    <p>Speak slowly, organize your thoughts, and avoid unnecessary filler words.</p>
+
+                    <h3>4. Highlight Real Experiences</h3>
+                    <p>Employers value practical examples from projects, internships, or coursework.</p>
+
+                    <h3>5. Prepare Questions</h3>
+                    <p>Always ask thoughtful questions about the role, team, or growth opportunities.</p>
+
+                </div>
+
+                <div class="tab-content" id="resume">
+
+                    <h2>Resume Tips</h2>
+
+                    <h3>Keep It Concise</h3>
+                    <p>Use a one-page resume unless you have extensive experience.</p>
+
+                    <h3>Highlight Achievements</h3>
+                    <p>Focus on measurable results instead of listing responsibilities.</p>
+
+                    <h3>Use Action Verbs</h3>
+                    <ul>
+                    <li>Developed</li>
+                    <li>Implemented</li>
+                    <li>Optimized</li>
+                    <li>Designed</li>
+                    </ul>
+
+                    <h3>Include Key Sections</h3>
+                    <ul>
+                    <li>Education</li>
+                    <li>Projects</li>
+                    <li>Technical Skills</li>
+                    <li>Internships / Experience</li>
+                    </ul>
+
+                </div>
+
+                <div class="tab-content" id="questions">
+
+                    <h2>Common Interview Questions</h2>
+
+                    <div class="category-grid">
+
+                    <div class="category-tile">
+                    <h3>General Questions</h3>
+                    <ul>
+                    <li>Tell me about yourself.</li>
+                    <li>Why do you want to work here?</li>
+                    <li>What motivates you?</li>
+                    <li>What are your greatest strengths?</li>
+                    <li>What is one weakness you are currently working to improve?</li>
+                    <li>Where do you see yourself in the next five years?</li>
+                    <li>Why did you choose your field of study?</li>
+                    <li>How do you stay updated with new technologies in your field?</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>Behavioral Questions</h3>
+                    <ul>
+                    <li>Describe a time you worked in a team.</li>
+                    <li>Tell me about a failure and what you learned.</li>
+                    <li>How do you handle deadlines?</li>
+                    <li>Describe a situation where you had to solve a difficult problem.</li>
+                    <li>Describe a situation where you disagreed with a teammate and how you handled it.</li>
+                    <li>Tell me about a time when you had multiple responsibilities and how you prioritized them.</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>General Technical Questions</h3>
+                    <ul>
+                    <li>Explain a project you built and the main problem it solves.</li>
+                    <li>What technologies did you choose for your project and why?</li>
+                    <li>How do you approach debugging when your program fails?</li>
+                    <li>Describe how you optimize a system for performance.</li>
+                    <li>Explain the difference between frontend and backend development.</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>Software Development Questions</h3>
+                    <ul>
+                    <li>How do you design scalable software systems?</li>
+                    <li>What is version control and why is Git important?</li>
+                    <li>Explain the concept of APIs and how applications communicate.</li>
+                    <li>How do you structure a large codebase to keep it maintainable?</li>
+                    <li>Describe how you test your code before deployment.</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>Machine Learning / AI Questions</h3>
+                    <ul>
+                    <li>Explain the difference between supervised and unsupervised learning.</li>
+                    <li>How do you evaluate the performance of a machine learning model?</li>
+                    <li>What challenges arise when deploying AI models in real-world systems?</li>
+                    <li>Explain the concept of overfitting and how to avoid it.</li>
+                    <li>How would you improve a model with low accuracy?</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>Project & Problem-Solving Questions</h3>
+                    <ul>
+                    <li>Describe the most technically challenging project you worked on.</li>
+                    <li>How do you break down a complex problem before coding?</li>
+                    <li>How do you handle situations where a project deadline is tight?</li>
+                    <li>What would you do if a critical feature fails right before deployment?</li>
+                    <li>Describe how you collaborate with teammates on technical projects.</li>
+                    </ul>
+                    </div>
+
+
+                    <div class="category-tile">
+                    <h3>System Thinking Questions</h3>
+                    <ul>
+                    <li>How would you design a scalable chat application?</li>
+                    <li>How would you build a recommendation system?</li>
+                    <li>How would you design a real-time data processing system?</li>
+                    <li>Explain how authentication works in modern web applications.</li>
+                    <li>What considerations are important when designing APIs?</li>
+                    </ul>
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tab-content" id="frameworks">
+
+                    <h2>Answer Frameworks</h2>
+                    <p class="framework-intro">
+                    Interview frameworks help structure your responses clearly and logically. 
+                    Using structured answers makes it easier for interviewers to understand your thinking process and evaluate your problem-solving ability.
+                    </p>
+
+
+                    <div class="framework-grid">
+
+                    <!-- STAR METHOD -->
+
+                    <div class="framework-card">
+
+                    <h3>STAR Method</h3>
+
+                    <p>
+                    The <strong>STAR method</strong> is one of the most widely used frameworks for answering behavioral interview questions. 
+                    It helps candidates explain real-life experiences in a clear and structured way.
+                    </p>
+
+                    <ul>
+                    <li><strong>Situation</strong> – Describe the background and context of the scenario.</li>
+                    <li><strong>Task</strong> – Explain your specific responsibility in that situation.</li>
+                    <li><strong>Action</strong> – Describe the steps you took to solve the problem.</li>
+                    <li><strong>Result</strong> – Explain the outcome and what you learned.</li>
+                    </ul>
+
+                    <p><strong>Example Question:</strong> Describe a time you solved a difficult problem.</p>
+
+                    <p><strong>Example Answer Structure:</strong></p>
+
+                    <p>
+                    Situation: During a project, our application performance slowed significantly when handling large datasets.
+                    <br><br>
+                    Task: My responsibility was to identify the bottleneck and improve performance.
+                    <br><br>
+                    Action: I analyzed database queries, implemented indexing, and optimized the data processing logic.
+                    <br><br>
+                    Result: The optimization reduced query time by 40% and improved overall system responsiveness.
+                    </p>
+
+                    </div>
+
+
+                    <!-- CAR METHOD -->
+
+                    <div class="framework-card">
+
+                    <h3>CAR Method</h3>
+
+                    <p>
+                    The <strong>CAR framework</strong> is a simplified version of STAR that focuses on the core elements of problem solving.
+                    It is especially useful when you need to answer questions quickly and concisely.
+                    </p>
+
+                    <ul>
+                    <li><strong>Challenge</strong> – Explain the problem or obstacle.</li>
+                    <li><strong>Action</strong> – Describe what you did to address it.</li>
+                    <li><strong>Result</strong> – Explain the impact or outcome.</li>
+                    </ul>
+
+                    <p><strong>Example Question:</strong> Tell me about a challenge you faced in a project.</p>
+
+                    <p><strong>Example Answer Structure:</strong></p>
+
+                    <p>
+                    Challenge: Our web application experienced slow loading times due to inefficient API calls.
+                    <br><br>
+                    Action: I redesigned the API requests to reduce redundant calls and implemented caching.
+                    <br><br>
+                    Result: The page load time decreased significantly and user experience improved.
+                    </p>
+
+                    </div>
+
+
+                    <!-- PREP METHOD -->
+
+                    <div class="framework-card">
+
+                    <h3>PREP Method</h3>
+
+                    <p>
+                    The <strong>PREP method</strong> is commonly used for opinion-based questions or technical explanations.
+                    It ensures that your answer is clear, concise, and logically structured.
+                    </p>
+
+                    <ul>
+                    <li><strong>Point</strong> – State your main idea.</li>
+                    <li><strong>Reason</strong> – Explain why it is important.</li>
+                    <li><strong>Example</strong> – Provide supporting evidence or experience.</li>
+                    <li><strong>Point</strong> – Restate your conclusion.</li>
+                    </ul>
+
+                    <p><strong>Example Question:</strong> Why is testing important in software development?</p>
+
+                    <p><strong>Example Answer Structure:</strong></p>
+
+                    <p>
+                    Point: Testing is essential for ensuring software reliability.
+                    <br><br>
+                    Reason: Without testing, bugs can reach production and negatively impact users.
+                    <br><br>
+                    Example: In one of my projects, automated testing helped detect a major bug before deployment.
+                    <br><br>
+                    Point: Therefore, testing plays a crucial role in maintaining software quality.
+                    </p>
+
+                    </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="tab-content" id="ai">
+
+                    <h2>AI Answer Examples</h2>
+
+                    <!-- Example 1 -->
+
+                    <div class="answer-example">
+
+                    <h3>Question: Tell me about a technical project you worked on.</h3>
+
+                    <p><strong>Best Rated Answer</strong></p>
+
+                    <p>
+                    In one of my projects, I developed a machine learning application that predicts user behavior based on historical data.
+                    I first collected and cleaned the dataset using Python and Pandas. After preprocessing the data, I experimented with
+                    multiple models including logistic regression and random forest.
+
+                    I evaluated the models using accuracy and F1 score, and selected the best-performing model. Finally, I integrated the
+                    model into a simple web interface so users could input data and instantly receive predictions.
+
+                    This project helped me understand the full machine learning pipeline including data preprocessing, model training,
+                    evaluation, and deployment.
+                    </p>
+
+                    <p><strong>Worst Rated Answer</strong></p>
+
+                    <p>
+                    I made a machine learning project in college that predicts some data. I used Python and some libraries.
+                    The project worked well and helped me learn machine learning.
+                    </p>
+
+                    </div>
+
+
+                    <!-- Example 2 -->
+
+                    <div class="answer-example">
+
+                    <h3>Question: How do you debug a program that is not working?</h3>
+
+                    <p><strong>Best Rated Answer</strong></p>
+
+                    <p>
+                    When debugging a program, I first try to reproduce the issue consistently so I understand when the error occurs.
+                    Then I examine logs and error messages to locate the problem.
+
+                    Next, I isolate the problematic section of code by testing smaller components individually. I often use debugging tools
+                    or print statements to track variable values and program flow.
+
+                    After identifying the root cause, I fix the issue and run tests to ensure the solution works correctly and does not
+                    introduce new bugs.
+                    </p>
+
+                    <p><strong>Worst Rated Answer</strong></p>
+
+                    <p>
+                    When my code doesn't work, I try different things until it works. Sometimes I restart the program or search online
+                    for the error.
+                    </p>
+
+                    </div>
+
+
+                    <!-- Example 3 -->
+
+                    <div class="answer-example">
+
+                    <h3>Question: Explain a challenge you faced while building a project.</h3>
+
+                    <p><strong>Best Rated Answer</strong></p>
+
+                    <p>
+                    While building a web application, one challenge was handling large amounts of user data efficiently.
+
+                    Initially the application became slow due to inefficient database queries. I analyzed the queries and implemented
+                    indexing and caching to improve performance.
+
+                    I also optimized backend logic to reduce redundant operations. After these improvements, the application response
+                    time improved significantly and the system handled higher traffic more efficiently.
+                    </p>
+
+                    <p><strong>Worst Rated Answer</strong></p>
+
+                    <p>
+                    My project had some bugs and errors, but I eventually fixed them and the project worked properly.
+                    </p>
+
+                    </div>
+
+
+                    <!-- Example 4 -->
+
+                    <div class="answer-example">
+
+                    <h3>Question: How do you approach learning a new technology?</h3>
+
+                    <p><strong>Best Rated Answer</strong></p>
+
+                    <p>
+                    When learning a new technology, I begin by understanding its core concepts and typical use cases.
+
+                    Then I follow official documentation and build small hands-on projects to gain practical experience.
+                    Once I am comfortable with the basics, I integrate the technology into larger projects.
+
+                    Finally, I explore open-source implementations to understand how experienced developers use the technology in real-world systems.
+                    </p>
+
+                    <p><strong>Worst Rated Answer</strong></p>
+                    <p>
+                    I usually watch a few tutorials and try to use the technology when needed.
+                    </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

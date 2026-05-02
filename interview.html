@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<div class="interview-container">
+
+ <div class="interview-stage">
+
+        <div id="progressIndicator" class="progress-indicator"></div>
+
+        <div id="questionHeader" class="question-header"></div>
+
+        <div class="avatar-container">
+            <canvas id="aiOrb"></canvas>
+        </div>
+
+        <div id="chatBox" class="chat-box"></div>
+
+  </div>
+
+  <div class="input-section">
+
+      <div class="input-wrapper">
+        <button id="micBtn" class="mic-btn">🎤</button>
+        <textarea id="answerInput" placeholder="Type your answer..."></textarea>
+      </div>
+
+      <div class="side-controls">
+        <div id="timer">04:00</div>
+        <button id="sendBtn">></button>
+      </div>
+
+  </div>
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+
+{% endblock %}

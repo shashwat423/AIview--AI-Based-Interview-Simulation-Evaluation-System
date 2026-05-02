@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}Results - AIview{% endblock %}
+
+{% block content %}
+
+<div class="results-container">
+
+    <h2 class="results-title">Interview History</h2>
+
+    <div class="results-table-wrapper">
+
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>ID</th>
+                    <th>Score</th>
+                    <th>Performance</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for interview in interviews %}
+                    <tr>
+                        <td>{{ (interview.date + timedelta(hours=5, minutes=30)).strftime("%d-%m-%Y, %H:%M") }}</td>
+                        <td>{{ interview.id }}</td>
+                        <td>{{ (interview.total_score*10)|round(2) }}/100</td>
+                        <td>
+                            {% set score = interview.total_score %}
+
+                            {% if score >= 9 %}
+                                Outstanding
+                            {% elif score >= 8 %}
+                                Excellent
+                            {% elif score >= 7 %}
+                                Very Good
+                            {% elif score >= 6 %}
+                                Good
+                            {% elif score >= 5 %}
+                                Fair
+                            {% elif score >= 4 %}
+                                Needs Practice
+                            {% else %}
+                                Below Average
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('result_detail', id=interview.id) }}" class="details-btn">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
